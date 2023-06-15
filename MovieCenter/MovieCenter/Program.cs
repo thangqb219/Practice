@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using MovieCenter.Data;
+
 namespace MovieCenter
 {
     public class Program
@@ -8,6 +11,7 @@ namespace MovieCenter
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MovieConnectionString")));
 
             var app = builder.Build();
 
